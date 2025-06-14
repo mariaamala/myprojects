@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management System</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #008cba;
+            color: white;
+            padding: 20px;
+            text-align: center;
+
+        }
+
+    /* Hamburger Menu */
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      position: absolute;
+      top: 25px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .menu-btn .bar {
+      height: 4px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+        nav {
+            background: #005f73;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 30px;
+            text-align: center;
+        }
+         .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .image-gallery img {
+            width: 80%;
+            height: 650px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            margin: 10px 0 5px 0;
+            color: #0077b6;
+            font-size: 20px;
+        }
+        .card p {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+        @media (max-width: 768px) {
+            .stats-section {
+                grid-template-columns: 1fr 1fr;
+            }
+         nav {
+        display: none;
+        flex-direction: column;
+      }
+      .menu-toggle:checked + .menu-btn + nav {
+        display: flex;
+      }
+      .stats-section {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+        @media (max-width: 500px) {
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        footer {
+            background: #333;
+            color: #ddd;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hospital Management System</h1>
+        <p>Welcome to the official hospital management dashboard</p>
+    </header>
+ <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+  <label for="menu-toggle" class="menu-btn">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </label>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/appointments">Appointments</a>
+         <a href="/doctors">Doctors</a>
+        <a href="/patients">Patients</a>
+    </nav>
+    <main>
+        <h2>HOPE HOSPITALS – Delivering Excellence, Everywhere</h2>
+<p>India's largest healthcare network offering world-class treatment and exceptional outcomes.</p>
+    </main>
+     <div class="image-gallery">
+<img src="{% static 'images/hospital6.jpg' %}" alt="Hospital" width="500">
+     </div>
+    <section class="stats-section">
+    <div class="card">
+        <img src="{% static 'images/hm1.png' %}" alt="Hospital">
+        <h3>73+ Hospitals</h3>
+        <p>India's Largest Private Hospital Network, Delivering Advanced Healthcare.</p>
+    </div>
+    <div class="card">
+        <img src="{% static 'images/hm2.png' %}" alt="Doctor">
+        <h3>11,000+ Doctors</h3>
+        <p>Leading Medical Experts Providing Exceptional Care Across India.</p>
+    </div>
+    <div class="card">
+        <img src="{% static 'images/hm3.png' %}" alt="Diagnostic Center">
+        <h3>2,300+ Diagnostic Centers</h3>
+        <p>Precision Diagnostics Accessible Across India.</p>
+    </div>
+    <div class="card">
+        <img src="{% static 'images/hm4.png' %}" alt="Clinic">
+        <h3>700+ Clinics</h3>
+        <p>Largest Clinic Network Bringing Quality Care Closer to You.</p>
+    </div>
+    <div class="card">
+        <img src="{% static 'images/hm5.png' %}" alt="Pincode">
+        <h3>10,000+ Pincodes</h3>
+        <p>Expanding Healthcare Services Across India's Pin Codes.</p>
+    </div>
+    <div class="card">
+        <img src="{% static 'images/hm6.png' %}" alt="Pharmacy">
+        <h3>6,500+ Pharmacies</h3>
+        <p>Ensuring Seamless Access to Medicines Nationwide.</p>
+    </div>
+</section>
+    <footer>
+        &copy; 2025 Hospital Management System. All rights reserved.
+    </footer>
+</body>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Doctors - Hospital Management{% endblock %}
+{% block content %}
+<h2 class="mb-4" style="text-align:center">Doctors</h2>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for doctor in doctors %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <img src="{{ doctor.image_url }}" class="card-img-top doctor-image" alt="Doctor Image"
+                 onerror="this.src='https://via.placeholder.com/300x200?text=No+Image';">
+            <div class="card-body">
+                <h5 class="card-title">{{ doctor.name }}</h5>
+                <p class="card-text"><strong>Specialty:</strong> {{ doctor.specialty }}</p>
+                <p class="card-text"><strong>Phone:</strong> {{ doctor.phone }}</p>
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'doctor_update' doctor.id %}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{% url 'doctor_delete' doctor.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No doctors found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
